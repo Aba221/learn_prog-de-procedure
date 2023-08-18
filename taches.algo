@@ -1,0 +1,60 @@
+//Algorithme pour le produit scalaire et la vérification de l'orthogonalité
+
+ALGORITHM DOT_PRODUCT
+    FUNCTION DotProduct(v1, v2: ARRAY OF INTEGER): INTEGER
+        VAR
+            ps: INTEGER
+        
+        ps ← 0
+        
+        FOR i ← 0 TO LENGTH(v1) - 1 DO
+            ps ← ps + v1[i] * v2[i]
+        END_FOR
+        
+        RETURN ps
+    END FUNCTION
+
+ALGORITHM CHECK_ORTHOGONAL
+    VAR
+        n: INTEGER
+        v1, v2: ARRAY OF INTEGER
+        
+    WRITE "Entre le nombre de vecteurs pairs "
+    READ n
+    
+    FOR i ← 1 TO n DO
+        WRITE "Entrer les éléments de vecteur v1: "
+        READ v1
+        WRITE "Entrer les éléments de vecteur v2: "
+        READ v2
+        
+        IF (DotProduct(v1, v2) = 0) THEN
+            WRITE "Les vecteurs sont orthogonaux."
+        ELSE
+            WRITE "Les vecteurs ne sont pas orthogonaux."
+        END_IF
+    END_FOR
+END ALGORITHM
+
+//Algorithme pour le tri par insertion
+
+ALGORITHM INSERTION_SORT
+    PROCEDURE InsertionSort(arr: ARRAY OF INTEGER)
+        VAR
+            n, i, j, temp: INTEGER
+        
+        n ← LENGTH(arr)
+        
+        FOR i ← 1 TO n - 1 DO
+            temp ← arr[i]
+            j ← i - 1
+            
+            WHILE j ≥ 0 AND arr[j] > temp DO
+                arr[j + 1] ← arr[j]
+                j ← j - 1
+            END_WHILE
+            
+            arr[j + 1] ← temp
+        END_FOR
+    END_PROCEDURE
+END ALGORITHM
